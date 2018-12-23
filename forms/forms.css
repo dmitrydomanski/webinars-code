@@ -1,0 +1,16 @@
+input{
+    margin-top: 5px;
+    /* float: right; */
+}
+
+form {
+    width: 50%;
+}
+
+div {
+    margin: 10px;
+}
+
+select { 
+    border: 3px solid chocolate;
+}

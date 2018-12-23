@@ -4,31 +4,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Forms</title>
-    <style>
+    <!-- <style>
     input{
         margin-top: 5px;
         /* float: right; */
     }
     form {
-        width: 50%
+        width: 50%;
+    }
+    div {
+        margin: 10px;
     }
 
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="./forms.css">
 </head>
 <body>
         <form action="../example/example.html" method="POST">
                 <div>
-                    <label for="user_name">User name</label>
-                    <input type="text" name="user_name" value="square">
+                    <label for="shape">Shape</label>
+                    <select name="shape" id="shape">
+                        <option>square</option>
+                        <option >triangle</option>
+                        <option >circle</option>
+                    </select>
                 </div>
+              
+                <div>
+                    <label for="user_name">User name</label>
+                    <input type="text" name="user_name" minlength="6" maxlength="12">
+                </div>
+
                 <div>
                         <label for="mail">User E-mail</label>
-                        <input type="email" name="mail">
-                    </div>
-                    <div>
+                        <input type="email" name="mail" required>
+                </div>
+
+                <div>
+                    <label for="size">Size</label>
+                    <input type="radio" name="size" value="small" >
+                    <input type="radio" name="size" value="medium" >
+                    <input type="radio" name="size" value="large" >
+                </div>
+
+                <progress max="100" value="60">60/100</progress>
+
+                <input type="date" name="datepicker" id="">
+
+                <div>
                             <label for="message">Message</label>
-                            <input type="text" name="message">
-                        </div>
+                            <!-- <input type="text" name="message"> -->
+                            <textarea name="message"cols="30" rows="10" wrap hard></textarea>
+                </div>
             <div>
                 <button type="submit">Submit</button>
             </div>
