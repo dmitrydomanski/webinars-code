@@ -1,0 +1,115 @@
+/* Global styles 
+#FD8265 - coral reef
+#DCE6DE - gainsboro
+#E4C1A4 - dark vanilla
+#C5B391 - khaki
+#83CBE8 - skyblue
+*/
+/* Links */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+h1, h2 {
+    color: crimson;
+    font-family: 'Caveat', cursive;
+    margin-top: 0;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    /* background-color: aqua; */
+    /* display: inline; */
+}
+
+h2 {
+    font-size: 36px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: darkgray;
+}
+
+/* Header & Footer */
+header, footer {
+    background: #FD8265;
+    color: #DCE6DE;
+}
+
+/* Work Experience */
+.work-experience {
+    background: #DCE6DE;
+}
+
+.company{
+    font-size: 1.5em;
+}
+
+p{
+    margin-bottom:  0;
+    line-height: 2;
+}
+
+/* Education */
+
+.education{
+    background: #C5B391;
+}
+
+.content-wrapper{
+    padding: 20px;
+}
+
+/* #heading {
+    color: skyblue;
+}
+
+.red {
+    color: red;
+} */
+
+
+/* http://colours.neilorangepeel.com/category/green/ */
+/* https://randoma11y.com */
+
+/* body {
+    background: forestgreen;
+}
+
+
+
+.blue  {
+    background-color: blue;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+section h2, h1 {
+    color: blue;
+}
+
+a:hover{
+    color: blueviolet;
+    background-color: lightgrey;
+}
+
+a:visited{
+    color: blueviolet;
+    background-color: lightgrey;
+}
+
+a:active{
+    color: blueviolet;
+    background-color: orangered;
+} */
+
