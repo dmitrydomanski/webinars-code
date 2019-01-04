@@ -6,6 +6,15 @@
 #83CBE8 - skyblue
 */
 /* Links */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -20,8 +29,6 @@ h1, h2 {
 h1 {
     font-size: 48px;
     font-weight: bold;
-    /* background-color: aqua; */
-    /* display: inline; */
 }
 
 h2 {
@@ -54,6 +61,7 @@ header, footer {
 p{
     margin-bottom:  0;
     line-height: 2;
+    clear: both;
 }
 
 /* Education */
@@ -62,54 +70,31 @@ p{
     background: #C5B391;
 }
 
-.content-wrapper{
-    padding: 20px;
+.content-wrapper, header p{
+    padding: 30px;
 }
 
-/* #heading {
-    color: skyblue;
+.user-pic{
+    float: left;
+    margin: 15px;
 }
 
-.red {
-    color: red;
-} */
-
-
-/* http://colours.neilorangepeel.com/category/green/ */
-/* https://randoma11y.com */
-
-/* body {
-    background: forestgreen;
+.user-name{
+    padding-top: 120px;
 }
 
-
-
-.blue  {
-    background-color: blue;
-}
-
-.center {
+footer{
     text-align: center;
+    padding-top: 30px;
 }
 
-
-
-section h2, h1 {
-    color: blue;
-}
-
-a:hover{
-    color: blueviolet;
-    background-color: lightgrey;
-}
-
-a:visited{
-    color: blueviolet;
-    background-color: lightgrey;
-}
-
-a:active{
-    color: blueviolet;
-    background-color: orangered;
+/* .box-model{
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border: black 2px solid;
+    margin: 0 auto;
 } */
+
 
