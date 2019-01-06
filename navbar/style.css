@@ -33,11 +33,11 @@ nav.black {
     padding: 10px 100px;
 }
 
-nav .black li a {
+nav.black li a {
     color: #ffffff;
 }
 
-nav .black .logo{
+nav.black .logo{
     color: #ffffff;
 }
 
@@ -67,8 +67,11 @@ nav .logo {
 
 nav ul a.active{
     background-color: orangered;
-    color: blanchedalmond;
     border-radius: 6px;
+}
+
+a:active{
+    color: blanchedalmond;
 }
 
 .wrapper{
@@ -112,4 +115,6 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 .btn:active{
 transform: translateY(-1px);
 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+/* background-color: orangered; */
+/* color: black; */
 }
