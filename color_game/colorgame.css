@@ -1,0 +1,19 @@
+.colorItem {
+    width: 30%;
+    margin: 1.5%;
+    border: solid 1px black;
+    border-radius: 20px;
+    padding-bottom: 30%;
+    float: left;
+}
+
+#colorItemWrapper {
+    /* position: relative;
+    top: 130px; */
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+main {
+    background-color: black
+}
