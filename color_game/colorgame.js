@@ -1,18 +1,17 @@
 function init(){
     const complexity = 9;
+    fillInSquares(complexity);
     const colorItems = document.querySelectorAll('.colorItem');
     setColours(complexity, colorItems);
     setComplexityButton(complexity,colorItems);
-    document.querySelector('.header').style.background = 'forestgreen';
     setResetButton(colorItems);
-    console.log(colorItems);
+    document.querySelector('.header').style.background = 'forestgreen';
     const message = document.querySelector('#message');
 }
 
 init();
 
 function setColours(n){
-    fillInSquares(n);
     const colorItems = document.querySelectorAll('.colorItem');
     paintColorsUp(colorItems);
     const pickedColour = pickColor(colorItems, n);
@@ -32,13 +31,14 @@ function setComplexityButton(n, array){
     buttons.forEach(element => {
         element.addEventListener('click', ()=>{
             if (element.textContent === 'Hard'){
-                complexity = 9;
+                // complexity = 9;
+                alert('hard');
             } else {
-                complexity = 6;
+                // complexity = 6;
+                alert('easy');
             }
         });
     });
-    setColours(n, array);
 }
 
 //1. Fill in squares
