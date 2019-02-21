@@ -1,27 +1,24 @@
-const http = require('http');
-const url = require('url');
+const express = require('express');
+const server = express();
+server.set('port', process.env.PORT || 3000)
 
-const makeServer = function (req, res) {
-    let path = url.parse(req.url).pathname;
-    console.log(path);
-    if (path === '/'){
-        res.writeHead(200, {'Content-type': 'text/plain'});
-        res.write('Basic path');
-    }
-    else if (path === '/about'){
-        res.writeHead(200, {'Content-type': 'text/plain'});
-        res.write('About page');
-    }
-    else if (path === '/blog'){
-        res.writeHead(200, {'Content-type': 'text/plain'});
-        res.write('Blog page');
-    }
-    else {
-        res.writeHead(404, {'Content-type': 'text/plain'});
-        res.write('Page not found');
-    }
-res.end();
-}
+//Basic routes
+server.get('/', (req, res) => {
+    res.send('Home page powered express');
+});
 
-const server = http.createServer(makeServer);
-server.listen(3000, () => console.log('Server is up and listening'));
+server.get('/about', (req, res) => {
+    res.send('About page powered express');
+});
+
+server.get('/blog', (req, res) => {
+    res.send('Blog page powered express');
+});
+
+server.use((req, res) => {
+    res.type('text/plain');
+    res.status(505);
+    res.send('Page doesnt exist');
+})
+
+server.listen(3000, () => console.log('Server is powered by express'));
