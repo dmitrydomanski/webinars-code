@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const mongoose = require('mongoose');
 const articles = require('./articles');
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -11,10 +13,11 @@ app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/c
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// app.get('/', (req, res) => res.send('app send smth'));
-// app.get('/', (req, res) => res.render('index', {
-//     title: 'Most viewed articles'
-// }));
+mongoose.connect('mongodb://localhost/blogproject', { useNewUrlParser: true });
+let db = mongoose.connection;
+
+db.on('error', (err) => console.log(err));
+db.once('open', () => console.log('Mongo DB is connected'));
 
 app.get('/', (req, res) => res.render('index', {
     title: 'Most viewed articles',
