@@ -1,7 +1,7 @@
 extends layout
 
 block content
-        h1 #{title}
+        h3 #{title}
         form(action="/articles/add", method="POST")
             #form-group
             label Title:
@@ -15,7 +15,7 @@ block content
 
             #form-group
             label Text:
-            textarea.form-control(name='body', type='text', cols='30', rows='10')
+            textarea.form-control(name='body', type='text', cols='30', rows='5')
             br
             input.btn.btn-primary(type='submit', value="Submit")
 

@@ -2,9 +2,14 @@ doctype html
 html
     head
         title theBlog
+        link(rel='stylesheet' href='/bootstrap/bootstrap.css')
     body
-        block content
+        div.jumbotron
+            div.container
+                h1 Another popular blog
+        div.container
+            block content
         br
         hr
-        footer
+        footer.container
             p copyright &copy; 2019

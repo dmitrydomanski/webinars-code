@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/css/'))
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
