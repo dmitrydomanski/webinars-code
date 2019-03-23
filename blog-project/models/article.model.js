@@ -10,7 +10,7 @@ let articleSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    diplayText: {
+    displayText: {
         type: String,
         required: true,
         default: 'Some text here'
