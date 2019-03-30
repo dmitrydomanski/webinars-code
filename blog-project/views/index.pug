@@ -4,9 +4,9 @@ block content
         h3 #{title}
         div.row
             each article, i in articles
-                div.col-md-4
+                div.col-md-4.mt-5
                     h4 #{article.title}
                     div #{article.author}
-                    p #{article.displayText}
-                    input.btn.btn-primary(type='button', value="Read more")
+                    p(style="min-height: 96px; margin-top: 5px") #{article.displayText}
+                    a.btn.btn-primary(type='button', value="Read more", href=`/articles/${article._id}`)
 

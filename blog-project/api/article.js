@@ -41,6 +41,22 @@ class ArticleManager {
             return resultObject;
         }
     }
+
+    async getArticleById (articleId) {
+        let resultObject = {
+            article: null,
+            error: null
+        }
+
+        try {
+           let article = await Article.findById(articleId);
+        //    let article = await Article.findOne({_id: articleId});
+           resultObject.article = article;
+        } catch (error) {
+            resultObject.error = error;            
+        }
+        return resultObject;
+    }
 }
 
 module.exports = ArticleManager;
