@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const articles = require('./routes/articles');
 const ArticleManager = require('./api/article');
+require('./models/user.model');
+require('./config/passport');
 
 //Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
