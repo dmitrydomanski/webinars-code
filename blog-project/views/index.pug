@@ -8,5 +8,5 @@ block content
                     h4 #{article.title}
                     div #{article.author}
                     p(style="min-height: 96px; margin-top: 5px") #{article.displayText}
-                    button.btn.btn-primary(type='button', value="Read more", href=`/articles/${article._id}`)
+                    a.btn.btn-primary(href=`/articles/${article._id}`) Read more
 
