@@ -11,7 +11,8 @@ passport.use(new LocalStrategy({
       Users.findOne({ email })
       .then(user => {
           if (!user || !user.verifyPassword(password)) {
-              return done(null, false, {errors: {'email or password': 'is invalid'}});
+              return done(null, false, {errors: {
+                  'email or password': 'is invalid'}});
           }
           return done(null, user);
       }).catch(done);

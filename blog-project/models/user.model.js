@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-    email: String,
+    email: {type: String, unique: true},
     hash: String,
     salt: String
 });
@@ -16,7 +16,7 @@ UserSchema.methods.setPassword = function (password) {
 }
 
 UserSchema.methods.verifyPassword = function(password) {
-    this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+    const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
     return this.hash = hash;
 }
 

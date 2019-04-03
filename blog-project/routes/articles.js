@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// const Article = require('../models/article.model');
 const ArticleManager = require("../api/article");
 
 showAddArticleForm = (req, res) => {
@@ -39,6 +38,7 @@ createNewArticle = async (req, res) => {
     }
   }
 
+// Articles routes
 router.get("/add", showAddArticleForm);
 router.post("/add", createNewArticle);
 router.get('/:id', displayArticleById);
