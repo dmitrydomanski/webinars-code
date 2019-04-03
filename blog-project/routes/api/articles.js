@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const ArticleManager = require("../api/article");
+const ArticleManager = require("../../api/article");
+const auth = require('../auth');
 
 showAddArticleForm = (req, res) => {
   res.render("addArticle", {
@@ -41,6 +42,6 @@ createNewArticle = async (req, res) => {
 // Articles routes
 router.get("/add", showAddArticleForm);
 router.post("/add", createNewArticle);
-router.get('/:id', displayArticleById);
+router.get('/:id', auth.required, displayArticleById);
 
 module.exports = router;
