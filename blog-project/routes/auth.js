@@ -1,9 +1,6 @@
 const jwt  = require('express-jwt');
 
 const getTokenFromHeaders = (req) => {
-    // const authorization = req.headers.authorization;
-    // const { headers } = req;
-    // const { authorization } = headers;
     const { headers: { authorization }} = req;
 
     if (authorization && authorization.split(' ')[0] === 'Token'){

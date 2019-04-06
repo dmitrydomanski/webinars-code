@@ -3,7 +3,6 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const articles = require('./routes/articles');
 const ArticleManager = require('./api/article');
 require('./models/user.model');
 require('./config/passport');
@@ -48,6 +47,7 @@ app.get('/', async (req, res) => {
 });
 
 //Routes
-app.use('/articles', articles);
+// app.use('/articles', articles);
+app.use(require('./routes'));
 
 app.listen(3000, () => console.log('server is up and running at port 3000'));
