@@ -3,8 +3,10 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const ArticleManager = require('./api/article');
 require('./models/user.model');
+const articles = require('./routes/api/articles');
+const users = require('./routes/api/users');
+const ArticleManager = require('./api/article');
 require('./config/passport');
 
 //Middlewares
@@ -31,6 +33,13 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
+
+app.get('*', (req, res, next) => {
+  res.locals.user = req.user || null;
+  console.log(res.locals);
+  next();
+})
+
 app.get('/', async (req, res) => {
   let articlesManager = new ArticleManager();
   const articles = await articlesManager.getArticles();
@@ -47,7 +56,8 @@ app.get('/', async (req, res) => {
 });
 
 //Routes
-// app.use('/articles', articles);
-app.use(require('./routes'));
+app.use('/articles', articles);
+app.use('/users', users);
+// app.use(require('./routes'));
 
 app.listen(3000, () => console.log('server is up and running at port 3000'));

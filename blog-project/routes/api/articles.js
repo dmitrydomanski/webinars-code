@@ -10,6 +10,7 @@ showAddArticleForm = (req, res) => {
 };
 
 createNewArticle = async (req, res) => {
+  // on client: req.setHeaders('authorization', `Token ${localStorage.getItem('jwt-token')}`);
     const { title, author, body } = req.body;
     const articleManager = new ArticleManager();
     const newArticle = await articleManager.createNewArticle(title, author, body);
@@ -40,8 +41,8 @@ createNewArticle = async (req, res) => {
   }
 
 // Articles routes
-router.get("/add", auth.required, showAddArticleForm);
-router.post("/add", auth.required, createNewArticle);
+router.get("/add", auth.optional, showAddArticleForm);
+router.post("/add", auth.optional, createNewArticle);
 router.get('/:id', auth.optional, displayArticleById);
 
 module.exports = router;

@@ -5,8 +5,9 @@ const auth = require('../auth');
 const Users = mongoose.model('Users');
 
 handleRegister = (req, res, next) => {
-    const { body: { user }} = req;
-    const { email, password } = user;
+    console.log(req.body);
+    const { body: { email, password, password2 }} = req;
+    // const { email, password } = req.body;
     
     if(!email){
         return res.status(422).json({
@@ -24,17 +25,28 @@ handleRegister = (req, res, next) => {
         })
     }
 
+    if(!password2 || password2 !== password) {
+        res.render('errors', {
+            error: 'passwords do not match'
+        })
+        return;
+    }
+
+    const user = {email, password}
+
     const finalUser = new Users(user);
     finalUser.setPassword(password);
 
     return finalUser.save()
-        .then(() => res.json({user: finalUser.toAuthJSON()}));
+        .then(() =>
+        res.redirect('/users/login')
+        // res.json({user: finalUser.toAuthJSON()})
+        );
 
 }
 
 handleLogin = (req, res, next) => {
-    const { body: { user }} = req;
-    const { email, password } = user;
+    const { body: { email, password }} = req;
     
     if(!email){
         return res.status(422).json({
@@ -60,13 +72,29 @@ handleLogin = (req, res, next) => {
         if(passportUser) {
             const user = passportUser;
             user.token = passportUser.generateJWT();
-            return res.json({
-                user: user.toAuthJSON()
-            })
+            // if we have framework, save token in localStorage on client
+            // save token to db
+            // user = user.toAuthJSON();
+            // return res.json({
+            //     user: user.toAuthJSON()
+            // })
+            return res.redirect('/articles/add');
         }
 
         return res.status(400).json({error: 'error on login'});
     })(req, res, next);
+}
+
+renderLoginPage = (req, res) => {
+    res.render('login', {
+        title: 'Please log in'
+    });
+}
+
+renderRegisterPage = (req, res) => {
+    res.render('register', {
+        title: 'New to articles? Please register'
+    });
 }
 
 handleGetCurrentUser = (req, res) => {
@@ -81,7 +109,9 @@ handleGetCurrentUser = (req, res) => {
         });
 }
 
+router.get('/register', auth.optional, renderRegisterPage);
 router.post('/register', auth.optional, handleRegister);
+router.get('/login', auth.optional, renderLoginPage);
 router.post('/login', auth.optional, handleLogin);
 router.get('/current', auth.required, handleGetCurrentUser);
 
