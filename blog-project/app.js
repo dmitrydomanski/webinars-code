@@ -38,4 +38,9 @@ db.on('error', (err) => console.log(err));
 
 // create socket
 const io = socket(server);
-io.on('connection', (socket) => console.log(`socket connection ${socket.id} establised`));
+io.on('connection', (socket) => {
+    console.log(`socket connection ${socket.id} establised`);
+
+    // catch chat message
+    socket.on('input', (data) => console.log(data.message));
+});
