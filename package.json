@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js" 
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/dmitrydomanski/webinars-code/issues"
   },
-  "homepage": "https://github.com/dmitrydomanski/webinars-code#readme"
+  "homepage": "https://github.com/dmitrydomanski/webinars-code#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "express": "^4.16.4",
+    "mysql": "^2.17.1",
+    "pug": "^2.0.3"
+  }
 }

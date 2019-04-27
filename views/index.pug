@@ -1,0 +1,9 @@
+extends layout
+
+block content
+        h3 #{title}
+        div.row
+            each article, i in articles
+                div.col-md-4
+                    h4 #{article.title}
+                    p #{article.body}
