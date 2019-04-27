@@ -1,0 +1,20 @@
+{
+  "name": "webinars-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitrydomanski/webinars-code.git"
+  },
+  "author": "Domanski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmitrydomanski/webinars-code/issues"
+  },
+  "homepage": "https://github.com/dmitrydomanski/webinars-code#readme"
+}
