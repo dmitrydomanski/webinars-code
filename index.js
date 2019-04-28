@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
-const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -10,41 +10,6 @@ app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/c
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-app.get('/', async (req, res) => {
-    let sql = 'SELECT * FROM articles';
-    await db.query(sql, (err, result) => {
-        if (err) {
-            console.log(`Error on fetching articles ${err}`);
-        } else {
-            let articles = [];
-            articles = result;
-            res.render('index', {
-                title: 'Most viewed articles',
-                articles: articles
-            });
-        }
-    });
-});
-
-app.get('/articles/add', (req, res) => res.render('addArticle', {
-    title: 'Add article'
-}));
-
-app.post('/articles/add', (req, res) => {
-    const { title, body } = req.body;
-    let article  = { title, body };
-    let sql = 'INSERT INTO articles SET ?';
-    db.query(sql, article, (err, result) => {
-        if (err) {
-            console.log(`Error on inserting article ${err}`);
-        } else {
-            console.log(result);
-            res.redirect('/');
-        }
-    });
-    
-});
 
 //Configure database
 const dbConfig = {
@@ -57,6 +22,42 @@ const dbConfig = {
 //Create connection
 const db = mysql.createConnection(dbConfig);
 
+// Get all atticles
+app.get('/', async (req, res) => {
+    let sql = 'SELECT * FROM articles';
+    await db.query(sql, (err, result) => {
+        if (err) {
+            console.log(`Error on fetching articles ${err}`);
+        } else {
+            res.render('index', {
+                title: 'Most viewed articles',
+                articles: result
+            });
+        }
+    });
+});
+
+// Get add article template
+app.get('/articles/add', (req, res) => res.render('addArticle', {
+    title: 'Add article'
+}));
+
+// Post an article
+app.post('/articles/add', (req, res) => {
+    const { title, body } = req.body;
+    let article  = { title, body };
+    let sql = 'INSERT INTO articles SET ?';
+    db.query(sql, article, (err, result) => {
+        if (err) {
+            console.log(`Error on inserting article ${err}`);
+        } else {
+            res.redirect('/');
+        }
+    });
+    
+});
+
+//Create DB with route
 app.get('/createdb', (req, res) => {
     let sql = 'CREATE DATABASE testdb';
     db.query(sql, (err, result) => {
@@ -69,6 +70,7 @@ app.get('/createdb', (req, res) => {
     });
 });
 
+// Check which DBs we have
 app.get('/checkdb', (req, res) => {
     let sql = 'SHOW DATABASES';
     db.query(sql, (err, result) => {
@@ -80,6 +82,7 @@ app.get('/checkdb', (req, res) => {
     });
 });
 
+// Create table with a route
 app.get('/createarticlestable', (req, res) => {
     let sql = 'CREATE TABLE articles(id int AUTO_INCREMENT, title VARCHAR(255), body VARCHAR(255), PRIMARY KEY(id))';
     db.query(sql, (err, result) => {
