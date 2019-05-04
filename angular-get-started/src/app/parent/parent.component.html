@@ -1,0 +1,15 @@
+<h3>Parent component</h3>
+<!-- Two-way data binding -->
+<p>Passed up data: {{ parentName }}</p>
+<div class="passData">
+    Pass data down: <input type="text" [(ngModel)]='name'>
+</div>
+
+<!-- String interpolation -->
+<!-- <p class='name'>Name: {{ name }}</p> --> 
+
+<hr/>
+<!-- <div app-child></div> -->
+<!-- <div class="app-child"></div> -->
+<!-- Property binding -->
+<app-child [childName]='name' (parentName)='onParentNameSubmit($event)'></app-child>

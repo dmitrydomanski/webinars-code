@@ -1,0 +1,12 @@
+<div class='child'>
+  <h3>Child component</h3>
+  <p>
+    Passed down data: {{ childName }}
+  </p>
+  
+  <div class="passData">
+      Pass data up: <input type="text" 
+      [(ngModel)]='name'
+      (keydown.enter)='onParentNameSubmit(name)'>
+  </div>
+</div>
