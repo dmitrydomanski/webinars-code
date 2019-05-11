@@ -1,0 +1,10 @@
+<div class='child'>
+  <h3>Get car brand</h3>
+ 
+  <div class="passData">
+      Check database for brand: <input type="text" 
+      [(ngModel)]='carBrand'
+      (keydown.enter)='onBrandSubmit()'>
+  </div>
+  <div> {{ exists }}</div>
+</div>
