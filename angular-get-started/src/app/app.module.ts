@@ -1,4 +1,4 @@
-import { DataServiceService } from './data-service.service';
+import { DataServiceService } from './services/data-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,6 +12,8 @@ import { PipeExampleComponent } from './pipe-example/pipe-example.component';
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { AsyncPipeObservableComponent } from './async-pipe-observable/async-pipe-observable.component';
 import { CarsBrandComponent } from './cars-brand/cars-brand.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { CarsBrandComponent } from './cars-brand/cars-brand.component';
     PipeExampleComponent,
     AsyncPipeComponent,
     AsyncPipeObservableComponent,
-    CarsBrandComponent
+    CarsBrandComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     DataServiceService

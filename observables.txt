@@ -1,0 +1,6 @@
+OBSERVABLE  - 
+// OBSERVER - subscribe()
+	next()
+	error()
+	complete()
+
