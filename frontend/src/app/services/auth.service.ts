@@ -8,7 +8,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  uri: String = 'http://localhost:5000/'
+
   getUserDetails(username: String, password: String) {
-    console.log('service: ', username, password)
+    console.log('reached service');
+    this.http.post(`${this.uri}`, {user: username, password: password})
   }
 }
